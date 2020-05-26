@@ -1,0 +1,41 @@
+ManifestFileVersion: 0
+CRC: 1976829885
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 5cc1d0eaff266f591d926d242a854dba
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4146bcfd0426e8d95926b0729a15d215
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 20
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 81
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3b4007626e3d8c143bfa0dc8d3416b8c, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+Assets:
+- Assets/ABSource/Player/Player004.prefab
+- Assets/ABSource/Player/Player003.prefab
+- Assets/ABSource/Player/Player002.prefab
+- Assets/ABSource/Player/Player001.prefab
+Dependencies: []

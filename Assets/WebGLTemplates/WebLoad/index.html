@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-us">
+ 
+  <head>
+    <meta charset="utf-8">
+    <title>飞夺泸定桥虚拟仿真实验</title>
+	<script src="Build/UnityLoader.js"></script>
+	<link rel="stylesheet" href="style.css">
+    <style>
+      html {
+        box-sizing: border-box;
+      }
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
+	  a{
+		  text-decoration: none;
+	  }
+      body {
+        margin: 0;
+		background-color:rgba(255,255,255,255);
+      }
+      #gameContainer {
+	    top: 0vh;
+        width: 960px;
+        height: 600px;
+      }
+	  
+	  .fullscreen{
+	    margin: -30px 0px 0px 850px;
+		background-image: url('fullscreen.png');
+		width: 38px;
+		height: 38px;
+	  }
+	 
+      canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+ 
+      .logo {
+          display: block;
+          width: max-width: 80vw;
+          height: max-height: 60vh;
+       }
+ 
+      .progress {
+		  position:absolute;
+		  top: 450px;
+		  border:1.5px solid;
+		  border-color:#DBA171;
+		  border-radius:25px;
+          width: 600px;height:11px; 
+      }
+	  #progressBarNum{
+		  width: auto;position: absolute;left: 600px;top:-5px;color:#f5f5f5;
+	  }
+      .progress .full {
+		
+		  
+		  display:block;
+          margin: 0px;
+		 <!--  border:1px solid;-->
+		  border-radius:30px;		 
+          transform-origin: top left;
+		  
+      }
+ 
+      #loader {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 960px;
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+ 
+      .spinner,
+      .spinner:after {
+        border-radius: 50%;
+        width: 5em;
+        height: 5em;
+      }
+      .spinner {
+        margin: 10px;
+        font-size: 10px;
+        position: relative;
+        text-indent: -9999em;
+        border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+        border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+        border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+        border-left: 1.1em solid #ffffff;
+        transform: translateZ(0);
+        animation: spinner-spin 1.1s infinite linear;
+      }
+      @keyframes spinner-spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+	  
+		@media screen and (min-width: 1201px) { 
+			.abc {width: 1200px} 
+	  } 
+	  
+	  #experiment{
+		text-align:center;
+	  }	 
+	  
+    </style>
+  </head>
+ 
+  <body>
+      <div class="webgl-content">
+		<div id="gameContainer" style="width: 960px; height: 600px"></div>
+		<div id="loader">		
+			<img class="logo" src="load.png">			
+			<div class="spinner"></div>
+			<div class="progress">
+				<img class="full" src="sliderFull.png"></img>
+				 <img  src="flag.png" id="flagPic" style="position: absolute;top:-65px;left:-25px;width: 60px;"/>
+				 <span id="progressBarNum"></span>
+			</div>
+		</div>
+		<div id="experiment">
+		<p><b><big><br />西南财经大学“飞夺泸定桥”虚拟仿真实验</big></b></p>
+		<div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+		<p><b><big><big><font><a href="https://download-ssl.firefox.com.cn/releases-sha2/stub/official/zh-CN/Firefox-latest.exe" data-link-type="download"  style="color: red;">推荐使用火狐浏览器，请点击下载</a> </font></big></big></b></p>
+	    </div>
+	  </div>
+  </body>
+
+<script>
+	var newSetTimeOut = setTimeout(function(){ alert("您当前网速过慢，请更换更快的网络或继续等待~~"); }, 120000);    //定时器提示
+
+  var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Bridge.json", {onProgress: UnityProgress});
+  function UnityProgress(gameInstance, progress) {
+
+    if (!gameInstance.Module) {
+      return;
+    }
+    var loader = document.querySelector("#loader"); 
+    if (!gameInstance.progress) {
+      var progress = document.querySelector("#loader .progress"); 
+      progress.style.display = "block"; 
+		
+      gameInstance.progress = progress.querySelector(".full");
+      loader.querySelector(".spinner").style.display = "none";
+	  
+	  
+    }
+    gameInstance.progress.style.transform = `scaleX(${progress})`;
+	/*动态改变旗帜left值*/
+	 var flagPicLeft = document.querySelector("#flagPic"); 
+	 flagPicLeft.style.left = Math.round((progress-0.05)*100)+'%';
+	
+	
+    if (progress === 1 && !gameInstance.removeTimeout) {
+      gameInstance.removeTimeout = setTimeout(function() {
+          loader.style.display = "none";
+      }, 2000);
+    }
+	var newBarNum =  document.querySelector('#progressBarNum');  //获取显示进度条元素
+	newBarNum.innerHTML=Math.round(progress*100)+'%';			//进度回填
+	if(Math.round(progress*100) == 100){    //加载完成时清楚提示定时器
+		clearTimeout(newSetTimeOut);
+	}
+
+  }
+  </script>
+</html>
+ 
+
+ 

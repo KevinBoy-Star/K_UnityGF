@@ -1,0 +1,21 @@
+﻿{
+	"ServerUrl":"http://192.168.0.121:8090",
+	"ConnectState":true,
+	"UserInfo":
+	[
+		{
+			"Id":1,
+			"Name":"黄飞龙"
+		},
+
+		{
+			"Id":2,
+			"Name":"尚超"
+		}
+	],
+	"UserData":
+	{
+		"Name":"黄飞龙",
+		"Age":25
+	}
+}

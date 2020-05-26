@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServerConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <students>
+    <Student>
+      <name>黄飞龙</name>
+      <age>25</age>
+      <classes>3</classes>
+    </Student>
+    <Student>
+      <name>张玲</name>
+      <age>22</age>
+      <classes>1</classes>
+    </Student>
+  </students>
+</ServerConfig>

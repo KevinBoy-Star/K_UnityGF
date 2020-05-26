@@ -1,0 +1,10 @@
+ManifestFileVersion: 0
+CRC: 4113519271
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: models.unity3d
+      Dependencies: {}
+    Info_1:
+      Name: player.unity3d
+      Dependencies: {}
